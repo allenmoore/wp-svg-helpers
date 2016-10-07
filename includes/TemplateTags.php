@@ -41,4 +41,3 @@ function inline_svg( $svg ) {
 function svg_button( $svg, $title, $loc = null ) {
 	do_action( 'svg_button', $svg, $title, $loc );
 }
-

@@ -8,11 +8,11 @@ WP SVG Helpers makes it easy to inline SVG files into any WordPress project.
 ## Usage
 
 ### SVG File Path Setting
-The SVG file path for the activated theme can be set via a setting through the _Settings > Media_ menu in WordPress. By default, the path is set to `assets/svg/dist/`, but it can be easily changed. Follow these steps to change the file path setting:
+The file path to be used for SVG assets can either be the file path for the activated theme or the url for a remote url. The setting can be changed through the _Settings > Media_ menu in WordPress. By default, the path is set to `assets/svg/dist/`, but it can be easily changed. Follow these steps to change the file path setting:
 
 1. Navigate to the _Settings > Media_ menu in WordPress.
 2. Look for the new section in the _WordPress Media Settings Screen_ titled _SVG Helpers_.
-3. Enter the correct path to your theme's SVG files in the input field.
+3. Enter the correct path or url to use for SVG resources in the input field.
 4. Click _Save Changes_.
 
 ### Template Tags

@@ -16,8 +16,35 @@ class Helpers {
 	 * @author Allen Moore, 10up
 	 */
 	public function __construct() {
-		add_action( 'inline_svg', array( $this, 'inline_svg' ), 10, 2 );
+		add_action( 'inline_svg', array( $this, 'inline_svg' ), 10 );
 		add_action( 'svg_button', array( $this, 'svg_button' ), 10, 3 );
+	}
+
+	/**
+	 * Function to return the full path to SVG assets.
+	 *
+	 * @author Allen Moore, 10up
+	 * @param  string $path a directory to append to the path.
+	 * @return string       the full path for assets.
+	 */
+	public function get_assets_path( $path = '' ) {
+
+		$full_path = get_svg_path_option();
+
+		/**
+		 * Filters the path.
+		 *
+		 * This function allows the path to include a custom directory
+		 * structure for use cases where SVG assets are stored in multiple
+		 * directories.
+		 *
+		 * @author Allen Moore, 10up
+		 * @param  string $full_path the path to assets from options.
+		 * @param  string $path      a directory to append to the path.
+		 */
+		$full_path = apply_filters( 'svg_path', $full_path, $path );
+
+		return $full_path;
 	}
 
 	/**
@@ -42,8 +69,8 @@ class Helpers {
 	public function get_path() {
 
 		$theme_path = trailingslashit( get_template_directory() );
-		$option_path = get_svg_path_option();
-		$svg_path = trailingslashit( $theme_path . $option_path );
+		$path = $this->get_assets_path();
+		$svg_path = trailingslashit( $path . $option_path );
 
 		return $svg_path;
 	}
@@ -88,8 +115,8 @@ class Helpers {
 	 */
 	public function get_remote_file( $svg ) {
 
-		$option_path = get_svg_path_option();
-		$svg_file = $option_path . $svg . '.svg';
+		$path = $this->get_assets_path();
+		$svg_file = $path . $svg . '.svg';
 
 		return $svg_file;
 	}
@@ -189,11 +216,9 @@ class Helpers {
 			return;
 		}
 
-		$svg = ( null === $path ? $svg : $path . '/' . $svg );
+		$path = $this->get_file( $svg );
 
-		$full_svg = $this->get_file( $svg );
-
-		echo file_get_contents( $full_svg );
+		echo file_get_contents( $path );
 	}
 
 	/**
