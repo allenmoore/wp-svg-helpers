@@ -16,38 +16,51 @@ class Helpers {
 	 * @author Allen Moore, 10up
 	 */
 	public function __construct() {
-		add_action( 'inline_svg', array( $this, 'inline_svg' ), 10, 1 );
+		add_action( 'inline_svg', array( $this, 'inline_svg' ), 10, 2 );
 		add_action( 'svg_button', array( $this, 'svg_button' ), 10, 3 );
 	}
 
 	/**
-	 * Function that returns a SVG file path.
+	 * Function to detect the file path type.
+	 *
+	 * @author Allen Moore, 10up
+	 * @return Boolean returns true/false based on the file path type.
+	 */
+	public function get_path_type() {
+
+		$option_path = get_svg_path_option();
+
+		return (bool) filter_var( $option_path, FILTER_VALIDATE_URL	);
+	}
+
+	/**
+	 * Function that returns a file path.
 	 *
 	 * @author Allen Moore, 10up
 	 * @return string the constructed svg path.
 	 */
-	public function get_svg_path() {
+	public function get_path() {
 
 		$theme_path = trailingslashit( get_template_directory() );
-		$svg_path_option = get_svg_path_option();
-		$svg_path = trailingslashit( $theme_path . $svg_path_option );
+		$option_path = get_svg_path_option();
+		$svg_path = trailingslashit( $theme_path . $option_path );
 
 		return $svg_path;
 	}
 
 	/**
-	 * Function that returns a SVG file url.
+	 * Function that returns a file url.
 	 *
 	 * @author Allen Moore, 10up
 	 * @param  string $svg the name of the svg file to return.
 	 * @return string      the constructed svg file url.
 	 */
-	public function get_svg_file_path( $svg ) {
+	public function get_file_path( $svg ) {
 
 		if ( empty( $svg ) ) {
 			return;
 		}
-		$svg_path = $this->get_svg_path();
+		$svg_path = $this->get_path();
 
 		$svg_file_path = $svg_path . $svg . '.svg';
 
@@ -55,26 +68,54 @@ class Helpers {
 	}
 
 	/**
+	 * Function to return the path for a local file.
+	 *
+	 * @author Allen Moore, 10up
+	 * @return string the path for local files.
+	 */
+	public function get_local_file( $svg ) {
+
+		$svg_file = $this->get_file_path( $svg );
+
+		return $svg_file;
+	}
+
+	/**
+	 * Function to return a remote file url.
+	 *
+	 * @author Allen Moore, 10up
+	 * @return string the url for remote files.
+	 */
+	public function get_remote_file( $svg ) {
+
+		$option_path = get_svg_path_option();
+		$svg_file = $option_path . $svg . '.svg';
+
+		return $svg_file;
+	}
+
+	/*
 	 * Function that returns a SVG file.
 	 *
 	 * @author Allen Moore, 10up
 	 * @param  string $svg the name of the svg file to return.
-	 * @return string      the constructed svg file.
+	 * @return string      the constructed svg file:
 	 */
-	public function get_svg_file( $svg ) {
+	public function get_file( $svg ) {
+
 		$output = '';
 
 		if ( empty( $svg ) ) {
 			return;
 		}
 
-		$svg_file_path = $this->get_svg_file_path( $svg );
+		$path_type = $this->get_path_type();
 
-		ob_start();
-
-		include( $svg_file_path );
-
-		$output .= ob_get_clean();
+		if ( true === $path_type ) {
+			$output = $this->get_remote_file( $svg );
+		} else {
+			$output = $this->get_local_file( $svg );
+		}
 
 		return $output;
 	}
@@ -87,14 +128,15 @@ class Helpers {
 	 * @param  string $title the title of the button.
 	 * @return mixed         the constructed html button.
 	 */
-	public function get_left_svg_button( $svg, $title ) {
+	public function get_left_button( $svg, $title ) {
+
 		$output = '';
 
 		if ( empty( $svg ) && empty( $title ) ) {
 			return;
 		}
 
-		$svg_file_path = $this->get_svg_file_path( $svg );
+		$svg_file_path = $this->get_file_path( $svg );
 		$button_id = sanitize_title_with_dashes( $title );
 
 		ob_start();
@@ -114,14 +156,15 @@ class Helpers {
 	 * @param  string $title the title of the button.
 	 * @return mixed         the constructed html button.
 	 */
-	public function get_right_svg_button( $svg, $title ) {
+	public function get_right_button( $svg, $title ) {
+
 		$output = '';
 
 		if ( empty( $svg ) && empty( $title ) ) {
 			return;
 		}
 
-		$svg_file_path = $this->get_svg_file_path( $svg );
+		$svg_file_path = $this->get_file_path( $svg );
 		$button_id = sanitize_title_with_dashes( $title );
 
 		ob_start();
@@ -140,11 +183,17 @@ class Helpers {
 	 * @param  string $svg the name of the svg file.
 	 * @return void
 	 */
-	public function inline_svg( $svg ) {
+	public function inline_svg( $svg, $path = null ) {
+
 		if ( empty( $svg ) ) {
 			return;
 		}
-		echo $this->get_svg_file( $svg );
+
+		$svg = ( null === $path ? $svg : $path . '/' . $svg );
+
+		$full_svg = $this->get_file( $svg );
+
+		echo file_get_contents( $full_svg );
 	}
 
 	/**
@@ -163,8 +212,9 @@ class Helpers {
 		}
 
 		$loc = ( null === $loc ? 'left' : $loc );
-		$svg_button_cb = 'get_' . $loc . '_svg_button';
+		$svg_button_cb = 'get_' . $loc . '_button';
 
 		echo $this->$svg_button_cb( $svg, $title );
 	}
 }
+
