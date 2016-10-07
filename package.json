@@ -2,7 +2,7 @@
   "name": "wp-svg-helpers",
   "title": "WP SVG Helpers",
   "description": "WP SVG Helpers makes it easy to inline SVG files into any WordPress project.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "homepage": "http://wordpress.org/plugins",
   "repository": {
     "type": "git",

@@ -141,7 +141,7 @@ class Helpers {
 
 		ob_start();
 		?>
-		<button id="js-<?php echo esc_attr( $button_id ); ?>" class="button"><?php include( $svg_file_path ); ?><?php esc_html_e( ucfirst( $title ), 'tenup' ); ?></button>
+		<button id="js-<?php echo esc_attr( $button_id ); ?>" class="button"><?php include( $svg_file_path ); ?><?php esc_html_e( ucfirst( $title ), 'wp-svg-helpers' ); ?></button>
 		<?php
 		$output .= ob_get_clean();
 
@@ -169,7 +169,7 @@ class Helpers {
 
 		ob_start();
 		?>
-		<button id="js-<?php echo esc_attr( $button_id ); ?>" class="button"><?php esc_html_e( ucfirst( $title ), 'tenup' ); ?><?php include( $svg_file_path ); ?></button>
+		<button id="js-<?php echo esc_attr( $button_id ); ?>" class="button"><?php esc_html_e( ucfirst( $title ), 'wp-svg-helpers' ); ?><?php include( $svg_file_path ); ?></button>
 		<?php
 		$output .= ob_get_clean();
 

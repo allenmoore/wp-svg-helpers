@@ -54,7 +54,7 @@ class Settings {
 	 */
 	public function setting_section_callback() {
 		?>
-		<p><?php esc_html_e( 'Settings for the SVG Helpers.', 'tenup' ); ?></p>
+		<p><?php esc_html_e( 'Settings for the SVG Helpers.', 'wp-svg-helpers' ); ?></p>
 		<?php
 	}
 
@@ -69,7 +69,7 @@ class Settings {
 		?>
 
 		<input name="svghelpers_path" id="svghelpers_path" type="text" value="<?php echo esc_attr( $svg_path_option ); ?>" class="regular-text" />
-		<p class="description"><?php esc_html_e( 'The path to the active theme\'s SVG files. The default location is: ', 'tenup' ); ?><code><?php esc_html_e( 'assets/svg/dist/', 'tenup' ); ?></code></p>
+		<p class="description"><?php esc_html_e( 'The path, or remote url, to use for SVG resources. The default location is: ', 'wp-svg-helpers' ); ?><code><?php esc_html_e( 'assets/svg/dist/', 'wp-svg-helpers' ); ?></code></p>
 
 		<?php
 	}
