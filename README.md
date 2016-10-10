@@ -31,7 +31,7 @@ The SVG file location is optional for buttons, but it can be easily set to eithe
 
 ## Filter Example
 An example on filtering the path:
-```
+```php
 function custom_svg_path( $path ) {
 	$path = $path . 'dir/';
 	return $path;
