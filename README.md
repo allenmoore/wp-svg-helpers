@@ -29,6 +29,16 @@ For a button with an SVG file, use:
 ```
 The SVG file location is optional for buttons, but it can be easily set to either `right` or `left`. If the location is not provided, the SVG file will be located on the left by default.
 
+## Filter Example
+An example on filtering the path:
+```
+function custom_svg_path( $path ) {
+	$path = $path . 'dir/';
+	return $path;
+}
+add_filter( 'svg_path', 'custom_svg_path' );
+```
+
 ## Roadmap
 The Roadmap aims to outline future features.
 
