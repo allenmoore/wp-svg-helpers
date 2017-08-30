@@ -9,7 +9,7 @@
 /**
  * Returns the svg path option.
  *
- * @author Allen Moore, 10up
+ * @author Allen Moore
  * @return string the svg path option.
  */
 function get_svg_path_option() {
@@ -21,7 +21,7 @@ function get_svg_path_option() {
 /**
  * Template Tag that displays an inline SVG.
  *
- * @author Allen Moore, 10up
+ * @author Allen Moore
  * @param  string $svg the svg to display inline.
  * @return void
  */
@@ -32,7 +32,7 @@ function inline_svg( $svg ) {
 /**
  * Template Tag that displays a button with an inline SVG.
  *
- * @author Allen Moore, 10up
+ * @author Allen Moore
  * @param  string $svg   the svg to display inline.
  * @param  string $title the title of the button.
  * @param  string $loc   the svg display location, either right or left.

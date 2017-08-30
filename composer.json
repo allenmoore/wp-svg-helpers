@@ -1,23 +1,45 @@
 {
-	"name": "10up/wp-svg-helpers",
-	"description": "WP SVG Helpers makes it easy to inline SVG files into any WordPress project.",
-	"type": "wordpress-plugin",
-	"keywords": [],
-	"homepage": "http://wordpress.org/plugins",
-	"license": "MIT",
-	"authors": [
-		{
-			"name": "Allen Moore",
-			"email": "allen.moore@10up.com",
-			"homepage": "https://10up.com",
-			"role": "Developer"
-		},
-		{
-			"name": "John Bloch",
-			"email": "john.bloch@10up.com",
-			"homepage": "https://10up.com",
-			"role": "Developer"
-		}
-	],
-	"minimum-stability": "dev"
+  "name": "allenmoore/wp-svg-helpers",
+  "description": "WP SVG Helpers makes it easy to inline SVG files into any WordPress project.",
+  "version": "1.0.1",
+  "type": "wordpress-plugin",
+  "keywords": [
+    "wordpress",
+    "wordpress plugin",
+    "wordpress svg plugin",
+    "svg",
+    "inline svg",
+    "template tag",
+    "wordpress template tag",
+    "svg button"
+  ],
+  "homepage": "https://github.com/allenmoore/wp-svg-helpers",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Allen Moore",
+      "email": "info@allenmoore.me",
+      "homepage": "https://allenmoore.me",
+      "role": "Developer"
+    },
+    {
+      "name": "John Bloch",
+      "homepage": "https://johnbloch.com",
+      "role": "Developer"
+    },
+    ,
+    {
+      "name": "10up",
+      "email": "info@10up.com",
+      "homepage": "https://10up.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "email": "info@allenmoore.me",
+    "issues": "https://github.com/allenmoore/wp-svg-helpers/issues",
+    "source": "https://github.com/allenmoore/wp-svg-helpers",
+    "docs": "https://github.com/allenmoore/wp-svg-helpers#readme"
+  },
+  "minimum-stability": "dev"
 }

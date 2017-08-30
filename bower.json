@@ -1,6 +1,6 @@
 {
   "name": "wp-svg-helpers",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "main": "/",
   "license": "MIT",
   "ignore": [
@@ -12,11 +12,9 @@
     "assets/js/vendor/*",
     "images/src/*",
     "tests",
-    "bootstrap.php",
     "Gruntfile.js",
     "package.json",
-    "composer.json",
-    "phpunit.xml.dist"
+    "composer.json"
   ],
   "devDependencies": {},
   "keywords": []
