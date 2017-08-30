@@ -2,16 +2,16 @@
   "name": "wp-svg-helpers",
   "title": "WP SVG Helpers",
   "description": "WP SVG Helpers makes it easy to inline SVG files into any WordPress project.",
-  "version": "0.1.0",
-  "homepage": "http://wordpress.org/plugins",
+  "version": "1.0.1",
+  "homepage": "https://github.com/allenmoore/wp-svg-helpers",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/allenmoore/wp-svg-helpers"
   },
   "author": {
     "name": "Allen Moore",
-    "email": "allen.moore@10up.com",
-    "url": "https://10up.com"
+    "email": "info@allenmoore.me",
+    "url": "https://allenmoore.me",
   },
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -31,7 +31,7 @@
     "load-grunt-tasks": "^3.3.0",
     "glob": "~5.0.15",
     "grunt-wp-readme-to-markdown": "^0.9.0",
-	"chai": "^3.5.0",
+    "chai": "^3.5.0",
     "grunt-mocha": "^1.0.0"
   },
   "keywords": []

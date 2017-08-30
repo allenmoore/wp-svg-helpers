@@ -6,14 +6,14 @@
  * @since 1.0.0
  */
 
-namespace Tenup\WPSVGHelpers;
+namespace WPSVGHelpers;
 
 class Helpers {
 
 	/**
 	 * Constructor.
 	 *
-	 * @author Allen Moore, 10up
+	 * @author Allen Moore
 	 */
 	public function __construct() {
 		add_action( 'inline_svg', array( $this, 'inline_svg' ), 10, 1 );
@@ -23,7 +23,7 @@ class Helpers {
 	/**
 	 * Function that returns a SVG file path.
 	 *
-	 * @author Allen Moore, 10up
+	 * @author Allen Moore
 	 * @return string the constructed svg path.
 	 */
 	public function get_svg_path() {
@@ -38,7 +38,7 @@ class Helpers {
 	/**
 	 * Function that returns a SVG file url.
 	 *
-	 * @author Allen Moore, 10up
+	 * @author Allen Moore
 	 * @param  string $svg the name of the svg file to return.
 	 * @return string      the constructed svg file url.
 	 */
@@ -57,7 +57,7 @@ class Helpers {
 	/**
 	 * Function that returns a SVG file.
 	 *
-	 * @author Allen Moore, 10up
+	 * @author Allen Moore
 	 * @param  string $svg the name of the svg file to return.
 	 * @return string      the constructed svg file.
 	 */
@@ -82,7 +82,7 @@ class Helpers {
 	/**
 	 * Function that returns a html button with an inlined SVG on the left.
 	 *
-	 * @author Allen Moore, 10up
+	 * @author Allen Moore
 	 * @param  string $svg   the name of the svg file.
 	 * @param  string $title the title of the button.
 	 * @return mixed         the constructed html button.
@@ -99,7 +99,7 @@ class Helpers {
 
 		ob_start();
 		?>
-		<button id="js-<?php echo esc_attr( $button_id ); ?>" class="button"><?php include( $svg_file_path ); ?><?php esc_html_e( ucfirst( $title ), 'tenup' ); ?></button>
+		<button id="js-<?php echo esc_attr( $button_id ); ?>" class="button"><?php include( $svg_file_path ); ?><?php esc_html_e( ucfirst( $title ), 'wp-svg-helpers' ); ?></button>
 		<?php
 		$output .= ob_get_clean();
 
@@ -109,7 +109,7 @@ class Helpers {
 	/**
 	 * Function that returns a html button with an inlined SVG on the right.
 	 *
-	 * @author Allen Moore, 10up
+	 * @author Allen Moore
 	 * @param  string $svg   the name of the svg file.
 	 * @param  string $title the title of the button.
 	 * @return mixed         the constructed html button.
@@ -126,7 +126,7 @@ class Helpers {
 
 		ob_start();
 		?>
-		<button id="js-<?php echo esc_attr( $button_id ); ?>" class="button"><?php esc_html_e( ucfirst( $title ), 'tenup' ); ?><?php include( $svg_file_path ); ?></button>
+		<button id="js-<?php echo esc_attr( $button_id ); ?>" class="button"><?php esc_html_e( ucfirst( $title ), 'wp-svg-helpers' ); ?><?php include( $svg_file_path ); ?></button>
 		<?php
 		$output .= ob_get_clean();
 
@@ -136,7 +136,7 @@ class Helpers {
 	/**
 	 * Function that echos a SVG file.
 	 *
-	 * @author Allen Moore, 10up
+	 * @author Allen Moore
 	 * @param  string $svg the name of the svg file.
 	 * @return void
 	 */
@@ -150,7 +150,7 @@ class Helpers {
 	/**
 	 * Function that echos a html button with a SVG icon.
 	 *
-	 * @author Allen Moore, 10up
+	 * @author Allen Moore
 	 * @param  string $svg   the name of the svg file.
 	 * @param  string $title the title of the button.
 	 * @param  string $loc   the location of the svg file within the button.

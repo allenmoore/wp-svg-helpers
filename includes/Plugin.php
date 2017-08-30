@@ -6,10 +6,10 @@
  * @since 1.0.0
  */
 
-namespace Tenup\WPSVGHelpers;
+namespace WPSVGHelpers;
 
-use Tenup\WPSVGHelpers\Helpers;
-use Tenup\WPSVGHelpers\Settings;
+use WPSVGHelpers\Helpers;
+use WPSVGHelpers\Settings;
 
 class Plugin {
 
@@ -17,7 +17,7 @@ class Plugin {
 	 * The instance of the Helpers module.
 	 *
 	 * @access public
-	 * @var \Tenup\WPSVGHelpers\Helpers
+	 * @var \WPSVGHelpers\Helpers
 	 */
 	public $helpers;
 
@@ -25,14 +25,14 @@ class Plugin {
 	 * The instance of the Settings module.
 	 *
 	 * @access public
-	 * @var \Tenup\WPSVGHelpers\Settings
+	 * @var \WPSVGHelpers\Settings
 	 */
 	public $settings;
 
 	/**
 	 * Setup the plugin's main functionality.
 	 *
-	 * @author Allen Moore, 10up
+	 * @author Allen Moore
 	 */
 	public function __construct() {
 		$this->helpers = new Helpers();
@@ -45,7 +45,7 @@ class Plugin {
 	/**
 	 * Initializes the plugin and fires an action other plugins can hook into.
 	 *
-	 * @author Allen Moore, 10up
+	 * @author Allen Moore
 	 * @return void
 	 */
 	public function init() {
@@ -55,7 +55,7 @@ class Plugin {
 	/**
 	 * Sets up the text domain.
 	 *
-	 * @author Allen Moore, 10up
+	 * @author Allen Moore
 	 * @return void
 	 */
 	public function i18n() {

@@ -1,9 +1,7 @@
 # WP SVG Helpers
 WP SVG Helpers makes it easy to inline SVG files into any WordPress project.
 
-<p align="center">
-<a href="http://10up.com/contact/"><img src="https://10updotcom-wpengine.s3.amazonaws.com/uploads/2016/10/10up-Github-Banner.png" width="850"></a>
-</p>
+Supported by [10up](https://10up.com).
 
 ## Installation
 1. Upload the entire `/wp-svg-helpers` directory to the `/wp-content/plugins/` directory.

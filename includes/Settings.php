@@ -6,14 +6,14 @@
  * @since 1.0.0
  */
 
-namespace Tenup\WPSVGHelpers;
+namespace WPSVGHelpers;
 
 class Settings {
 
 	/**
 	 * Constructor.
 	 *
-	 * @author Allen Moore, 10up
+	 * @author Allen Moore
 	 * @return void
 	 */
 	public function __construct() {
@@ -23,7 +23,7 @@ class Settings {
 	/**
 	 * Adds Setting Sections and Fields to the WordPress Media Settings screen.
 	 *
-	 * @author Allen Moore, 10up
+	 * @author Allen Moore
 	 * @return void
 	 */
 	public function init_settings() {
@@ -49,19 +49,19 @@ class Settings {
 	/**
 	 * Callback function for the settings section.
 	 *
-	 * @author Allen Moore, 10up
+	 * @author Allen Moore
 	 * @return void
 	 */
 	public function setting_section_callback() {
 		?>
-		<p><?php esc_html_e( 'Settings for the SVG Helpers.', 'tenup' ); ?></p>
+		<p><?php esc_html_e( 'Settings for the SVG Helpers.', 'wp-svg-helpers' ); ?></p>
 		<?php
 	}
 
 	/**
 	 * Callback function for the settings field.
 	 *
-	 * @author Allen Moore, 10up
+	 * @author Allen Moore
 	 * @return void
 	 */
 	public function setting_callback() {
@@ -69,7 +69,7 @@ class Settings {
 		?>
 
 		<input name="svghelpers_path" id="svghelpers_path" type="text" value="<?php echo esc_attr( $svg_path_option ); ?>" class="regular-text" />
-		<p class="description"><?php esc_html_e( 'The path to the active theme\'s SVG files. The default location is: ', 'tenup' ); ?><code><?php esc_html_e( 'assets/svg/dist/', 'tenup' ); ?></code></p>
+		<p class="description"><?php esc_html_e( 'The path to the active theme\'s SVG files. The default location is: ', 'wp-svg-helpers' ); ?><code><?php esc_html_e( 'assets/svg/dist/', 'wp-svg-helpers' ); ?></code></p>
 
 		<?php
 	}

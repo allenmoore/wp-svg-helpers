@@ -1,18 +1,18 @@
 <?php
 /**
  * Plugin Name: WP SVG Helpers
- * Plugin URI:  http://wordpress.org/plugins
+ * Plugin URI:  https://github.com/allenmoore/wp-svg-helpers
  * Description: WP SVG Helpers makes it easy to inline SVG files into any WordPress project.
- * Version:     1.0.0
- * Author:      10up
- * Author URI:  https://10up.com
+ * Version:     1.0.1
+ * Author:      Allen Moore
+ * Author URI:  https://allenmoore.me
  * Text Domain: wp-svg-helpers
  * Domain Path: /languages
  * License:     MIT
  */
 
 /**
- * Copyright (c) 2016 10up (email : info@10up.com)
+ * Copyright (c) 2017 Allen Moore (email : info@allenmoore.me)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,12 +33,12 @@
  * SOFTWARE.
  */
 
-namespace Tenup\WPSVGHelpers;
+namespace WPSVGHelpers;
 
-use Tenup\WPSVGHelpers\Plugin;
+use WPSVGHelpers\Plugin;
 
 // Useful global constants.
-define( 'WP_SVG_HELPERS_VERSION', '1.0.0' );
+define( 'WP_SVG_HELPERS_VERSION', '1.0.1' );
 define( 'WP_SVG_HELPERS_URL',     plugin_dir_url( __FILE__ ) );
 define( 'WP_SVG_HELPERS_PATH',    dirname( __FILE__ ) . '/' );
 define( 'WP_SVG_HELPERS_INC',     WP_SVG_HELPERS_PATH . 'includes/' );
@@ -63,4 +63,4 @@ function initialize() {
 	 */
 	do_action( 'wp_svg_helpers_loaded', $plugin );
 }
-add_action( 'after_setup_theme', 'Tenup\WPSVGHelpers\initialize', 20 );
+add_action( 'after_setup_theme', 'WPSVGHelpers\initialize', 20 );
