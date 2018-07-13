@@ -28,7 +28,7 @@ class Helpers {
 	 */
 	public function get_svg_path() {
 
-		$theme_path = trailingslashit( get_template_directory() );
+		$theme_path = trailingslashit( get_stylesheet_directory() );
 		$svg_path_option = get_svg_path_option();
 		$svg_path = trailingslashit( $theme_path . $svg_path_option );
 
