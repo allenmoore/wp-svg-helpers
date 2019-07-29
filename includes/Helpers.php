@@ -17,7 +17,47 @@ class Helpers {
 	 */
 	public function __construct() {
 		add_action( 'inline_svg', array( $this, 'inline_svg' ), 10, 1 );
-		add_action( 'svg_button', array( $this, 'svg_button' ), 10, 3 );
+		add_action( 'svg_button', array( $this, 'svg_button' ), 10, 5 );
+	}
+
+	/**
+	 * Function to retrieve the classes for the button element as an array.
+	 *
+	 * @param string|array $class One or more classes to add to the class list.
+	 * @return array Array of classes.
+	 */
+	public function get_button_class( $class = '' ) {
+
+		$classes = array();
+
+		if ( ! empty( $class ) ) {
+			if ( !is_array( $class ) )
+				$class = preg_split( '#\s+#', $class );
+			$classes = array_merge( $classes, $class );
+		} else {
+			$class = array();
+		}
+
+		$classes = array_map( 'esc_attr', $classes );
+
+		/**
+		 * Filters the list of CSS button classes.
+		 *
+		 * @param array $classes An array of button classes.
+		 * @param array $class   An array of additional classes added to the button.
+		 */
+		$classes = apply_filters( 'wpsvg_button_class', $classes, $class );
+
+		return array_unique( $classes );
+	}
+
+	/**
+	 * Function to display the classes for the button element.
+	 *
+	 * @param string|array $class One or more classes to add to the class list.
+	 */
+	public function button_class( $class = '' ) {
+		echo 'class="' . join( ' ', $this->get_button_class( $class ) ) . '"';
 	}
 
 	/**
@@ -85,9 +125,11 @@ class Helpers {
 	 * @author Allen Moore
 	 * @param  string $svg   the name of the svg file.
 	 * @param  string $title the title of the button.
+	 * @param  string $class the css class of the button.
+	 * @param  string $a11y  the a11y attributes to apply to the button.
 	 * @return mixed         the constructed html button.
 	 */
-	public function get_left_svg_button( $svg, $title ) {
+	public function get_left_svg_button( $svg, $title, $class = '', $a11y = '' ) {
 		$output = '';
 
 		if ( empty( $svg ) && empty( $title ) ) {
@@ -96,10 +138,11 @@ class Helpers {
 
 		$svg_file_path = $this->get_svg_file_path( $svg );
 		$button_id = sanitize_title_with_dashes( $title );
+		$a11y = ( empty( $a11y ) ? '' : $a11y );
 
 		ob_start();
 		?>
-		<button id="js-<?php echo esc_attr( $button_id ); ?>" class="button"><?php include( $svg_file_path ); ?><?php esc_html_e( ucfirst( $title ), 'wp-svg-helpers' ); ?></button>
+		<button id="js-<?php echo esc_attr( $button_id ); ?>" <?php $this->button_class( $class ); ?> <?php echo esc_html( $a11y ); ?>><?php include( $svg_file_path ); ?><?php esc_html_e( ucfirst( $title ), 'wp-svg-helpers' ); ?></button>
 		<?php
 		$output .= ob_get_clean();
 
@@ -112,9 +155,11 @@ class Helpers {
 	 * @author Allen Moore
 	 * @param  string $svg   the name of the svg file.
 	 * @param  string $title the title of the button.
+	 * @param  string $class the css class of the button.
+	 * @param  string $a11y  the a11y attributes to apply to the button.
 	 * @return mixed         the constructed html button.
 	 */
-	public function get_right_svg_button( $svg, $title ) {
+	public function get_right_svg_button( $svg, $title, $class = '', $a11y = '' ) {
 		$output = '';
 
 		if ( empty( $svg ) && empty( $title ) ) {
@@ -123,10 +168,11 @@ class Helpers {
 
 		$svg_file_path = $this->get_svg_file_path( $svg );
 		$button_id = sanitize_title_with_dashes( $title );
+		$a11y = ( empty( $a11y ) ? '' : $a11y );
 
 		ob_start();
 		?>
-		<button id="js-<?php echo esc_attr( $button_id ); ?>" class="button"><?php esc_html_e( ucfirst( $title ), 'wp-svg-helpers' ); ?><?php include( $svg_file_path ); ?></button>
+		<button id="js-<?php echo esc_attr( $button_id ); ?>" <?php $this->button_class( $class ); ?> <?php echo esc_html( $a11y ); ?>><?php esc_html_e( ucfirst( $title ), 'wp-svg-helpers' ); ?><?php include( $svg_file_path ); ?></button>
 		<?php
 		$output .= ob_get_clean();
 
@@ -154,9 +200,11 @@ class Helpers {
 	 * @param  string $svg   the name of the svg file.
 	 * @param  string $title the title of the button.
 	 * @param  string $loc   the location of the svg file within the button.
+	 * @param  string $class the css class of the button.
+	 * @param  string $a11y  the a11y attributes to apply to the button.
 	 * @return void
 	 */
-	public function svg_button( $svg, $title, $loc = null ) {
+	public function svg_button( $svg, $title, $loc = null, $class = '', $a11y = '' ) {
 
 		if ( empty( $svg ) && empty( $title ) ) {
 			return;
@@ -165,6 +213,6 @@ class Helpers {
 		$loc = ( null === $loc ? 'left' : $loc );
 		$svg_button_cb = 'get_' . $loc . '_svg_button';
 
-		echo $this->$svg_button_cb( $svg, $title );
+		echo $this->$svg_button_cb( $svg, $title, $class, $a11y );
 	}
 }

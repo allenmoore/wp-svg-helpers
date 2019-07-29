@@ -27,12 +27,32 @@ For an inlined SVG file, use:
 
 For a button with an SVG file, use:
 ```php
-<?php svg_button( 'name-of-svg', 'Button Title', 'location' ); ?>
+<?php svg_button( 'name-of-svg', 'Button Title', 'location', 'class', 'a11y' ); ?>
 ```
 The SVG file location is optional for buttons, but it can be easily set to either `right` or `left`. If the location is not provided, the SVG file will be located on the left by default.
+The `class` is the css class for the button and `a11y` allowes for developer defined accessibility attributes.
+
+
+#### Button Class Filter
+The CSS class for buttons can be easily filtered via a custom function filtering `wpsvg_button_class`. To filter the button class, use:
+```php
+<?php
+function my_button_filter( $classes ) {
+    $classes[] = 'your-button-class';
+   
+    return $classes;
+}
+add_filter( 'wpsvg_button_class', 'my_button_filter' );
+?>
+```
+
+#### A11y Attributes
+Accessibility attributes can be easily defined as a string, as such:
+```php
+<?php svg_button( 'name-of-svg', 'Button Title', 'location', 'class', 'aria-pressed=false' ); ?>
+``` 
 
 ## Roadmap
 The Roadmap aims to outline future features.
 
-* Addition of a class filter for buttons with SVG's. This will be an array of classes that can be specified through the template tag or via a filter.
-* Make both inline SVG's and buttons with SVG's, fully accessible.
+* Addition of JavaScript helper functions.
