@@ -27,9 +27,23 @@ For an inlined SVG file, use:
 
 For a button with an SVG file, use:
 ```php
-<?php svg_button( 'name-of-svg', 'Button Title', 'location' ); ?>
+<?php svg_button( 'name-of-svg', 'Button Title', 'location', 'class' ); ?>
 ```
 The SVG file location is optional for buttons, but it can be easily set to either `right` or `left`. If the location is not provided, the SVG file will be located on the left by default.
+The class is the css class for the button.
+
+### Button Class Filter
+The CSS class for buttons can be easily filtered via a custom function filtering `wpsvg_button_class`. To filter the button class, use:
+```php
+<?php
+function my_button_filter( $classes ) {
+    $classes[] = 'your-button-class';
+   
+    return $classes;
+}
+add_filter( 'wpsvg_button_class', 'my_button_filter' );
+?>
+```
 
 ## Roadmap
 The Roadmap aims to outline future features.
