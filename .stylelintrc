@@ -1,0 +1,4 @@
+{
+  "plugins": ["stylelint-no-unsupported-browser-features"],
+  "extends": ["stylelint-config-allenmoore"]
+}
