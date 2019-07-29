@@ -3,7 +3,7 @@
  * Plugin Name: WP SVG Helpers
  * Plugin URI:  https://github.com/allenmoore/wp-svg-helpers
  * Description: WP SVG Helpers makes it easy to inline SVG files into any WordPress project.
- * Version:     1.0.3
+ * Version:     1.0.2
  * Author:      Allen Moore
  * Author URI:  https://allenmoore.co
  * Text Domain: wp-svg-helpers
