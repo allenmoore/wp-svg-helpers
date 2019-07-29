@@ -18,7 +18,7 @@
   "authors": [
     {
       "name": "Allen Moore",
-      "email": "info@allenmoore.co",
+      "email": "am@allenmoore.co",
       "homepage": "https://allenmoore.co",
       "role": "Developer"
     },
@@ -35,7 +35,7 @@
     }
   ],
   "support": {
-    "email": "info@allenmoore.co",
+    "email": "am@allenmoore.co",
     "issues": "https://github.com/allenmoore/wp-svg-helpers/issues",
     "source": "https://github.com/allenmoore/wp-svg-helpers",
     "docs": "https://github.com/allenmoore/wp-svg-helpers#readme"

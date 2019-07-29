@@ -29,8 +29,8 @@ gulp.task('translate', () => {
         domain: 'wp-svg-helpers',
         package:'WP SVG Helpers',
         bugReport: 'https://github.com/allenmoore/wp-svg-helpers/issues',
-        lastTranslator: 'Allen Moore <info@allenmoore.co>',
-        team: 'Allen Moore <info@allenmoore.co>'
+        lastTranslator: 'Allen Moore <am@allenmoore.co>',
+        team: 'Allen Moore <am@allenmoore.co>'
       })
     )
     .pipe(gulp.dest(`${opts.dest}/wp-svg-helpers.pot`))
