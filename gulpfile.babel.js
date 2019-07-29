@@ -1,4 +1,5 @@
 import gulp from 'gulp';
+import {release} from 'gulp-release-it';
 import requireDir from 'require-dir';
 
 requireDir('./gulp-tasks');
@@ -72,3 +73,5 @@ gulp.task('wppot', gulp.series(['translate'], (done) => {
  * @returns {void}
  */
 gulp.task('default', gulp.series(['clean-files', 'css', 'imagemin', 'minify']));
+
+release(gulp);
