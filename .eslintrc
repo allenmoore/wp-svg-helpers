@@ -1,0 +1,5 @@
+{
+  "env": {"browser": true},
+  "plugins": ["compat"],
+  "extends": "eslint-config-allenmoore"
+}

@@ -1,0 +1,12 @@
+{
+	"map": "inline",
+	"plugins": {
+		"postcss-cssnext": {
+			"features": {
+				"autoprefixer": {
+					"browsers": ["last 2 versions"]
+				}
+			}
+		}
+	}
+}

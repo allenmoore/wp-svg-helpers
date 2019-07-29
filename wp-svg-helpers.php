@@ -5,14 +5,14 @@
  * Description: WP SVG Helpers makes it easy to inline SVG files into any WordPress project.
  * Version:     1.0.2
  * Author:      Allen Moore
- * Author URI:  https://allenmoore.me
+ * Author URI:  https://allenmoore.co
  * Text Domain: wp-svg-helpers
  * Domain Path: /languages
  * License:     MIT
  */
 
 /**
- * Copyright (c) 2017 Allen Moore (email : info@allenmoore.me)
+ * Copyright (c) 2019 Allen Moore (email : am@allenmoore.co)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
