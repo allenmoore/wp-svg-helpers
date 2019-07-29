@@ -35,9 +35,10 @@ function inline_svg( $svg ) {
  * @param  string $svg   the svg to display inline.
  * @param  string $title the title of the button.
  * @param  string $loc   the svg display location, either right or left.
- * @param  string        the css class of the button.
+ * @param  string $class the css class of the button.
+ * @param  string $a11y  the a11y attributes to apply to the button.
  * @return void
  */
-function svg_button( $svg, $title, $loc = null, $class = '' ) {
-	do_action( 'svg_button', $svg, $title, $loc, $class );
+function svg_button( $svg, $title, $loc = null, $class = '', $a11y = '' ) {
+	do_action( 'svg_button', $svg, $title, $loc, $class, $a11y );
 }
