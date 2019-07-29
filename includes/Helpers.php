@@ -21,6 +21,46 @@ class Helpers {
 	}
 
 	/**
+	 * Function to retrieve the classes for the button element as an array.
+	 *
+	 * @param string|array $class One or more classes to add to the class list.
+	 * @return array Array of classes.
+	 */
+	public function get_button_class( $class = '' ) {
+
+		$classes = array();
+
+		if ( ! empty( $class ) ) {
+			if ( !is_array( $class ) )
+				$class = preg_split( '#\s+#', $class );
+			$classes = array_merge( $classes, $class );
+		} else {
+			$class = array();
+		}
+
+		$classes = array_map( 'esc_attr', $classes );
+
+		/**
+		 * Filters the list of CSS button classes.
+		 *
+		 * @param array $classes An array of button classes.
+		 * @param array $class   An array of additional classes added to the button.
+		 */
+		$classes = apply_filters( 'wpsvg_button_class', $classes, $class );
+
+		return array_unique( $classes );
+	}
+
+	/**
+	 * Function to display the classes for the button element.
+	 *
+	 * @param string|array $class One or more classes to add to the class list.
+	 */
+	public function button_class( $class = '' ) {
+		echo 'class="' . join( ' ', $this->get_button_class( $class ) ) . '"';
+	}
+
+	/**
 	 * Function that returns a SVG file path.
 	 *
 	 * @author Allen Moore
@@ -85,9 +125,10 @@ class Helpers {
 	 * @author Allen Moore
 	 * @param  string $svg   the name of the svg file.
 	 * @param  string $title the title of the button.
+	 * @param  string        the css class of the button.
 	 * @return mixed         the constructed html button.
 	 */
-	public function get_left_svg_button( $svg, $title ) {
+	public function get_left_svg_button( $svg, $title, $class = '' ) {
 		$output = '';
 
 		if ( empty( $svg ) && empty( $title ) ) {
@@ -99,7 +140,7 @@ class Helpers {
 
 		ob_start();
 		?>
-		<button id="js-<?php echo esc_attr( $button_id ); ?>" class="button"><?php include( $svg_file_path ); ?><?php esc_html_e( ucfirst( $title ), 'wp-svg-helpers' ); ?></button>
+		<button id="js-<?php echo esc_attr( $button_id ); ?>" <?php $this->button_class( $class ); ?>><?php include( $svg_file_path ); ?><?php esc_html_e( ucfirst( $title ), 'wp-svg-helpers' ); ?></button>
 		<?php
 		$output .= ob_get_clean();
 
@@ -112,9 +153,10 @@ class Helpers {
 	 * @author Allen Moore
 	 * @param  string $svg   the name of the svg file.
 	 * @param  string $title the title of the button.
+	 * @param  string        the css class of the button.
 	 * @return mixed         the constructed html button.
 	 */
-	public function get_right_svg_button( $svg, $title ) {
+	public function get_right_svg_button( $svg, $title, $class = '' ) {
 		$output = '';
 
 		if ( empty( $svg ) && empty( $title ) ) {
@@ -126,7 +168,7 @@ class Helpers {
 
 		ob_start();
 		?>
-		<button id="js-<?php echo esc_attr( $button_id ); ?>" class="button"><?php esc_html_e( ucfirst( $title ), 'wp-svg-helpers' ); ?><?php include( $svg_file_path ); ?></button>
+		<button id="js-<?php echo esc_attr( $button_id ); ?>" <?php $this->button_class( $class ); ?>><?php esc_html_e( ucfirst( $title ), 'wp-svg-helpers' ); ?><?php include( $svg_file_path ); ?></button>
 		<?php
 		$output .= ob_get_clean();
 
@@ -154,9 +196,10 @@ class Helpers {
 	 * @param  string $svg   the name of the svg file.
 	 * @param  string $title the title of the button.
 	 * @param  string $loc   the location of the svg file within the button.
+	 * @param  string        the css class of the button.
 	 * @return void
 	 */
-	public function svg_button( $svg, $title, $loc = null ) {
+	public function svg_button( $svg, $title, $loc = null, $class = '' ) {
 
 		if ( empty( $svg ) && empty( $title ) ) {
 			return;
@@ -165,6 +208,6 @@ class Helpers {
 		$loc = ( null === $loc ? 'left' : $loc );
 		$svg_button_cb = 'get_' . $loc . '_svg_button';
 
-		echo $this->$svg_button_cb( $svg, $title );
+		echo $this->$svg_button_cb( $svg, $title, $class );
 	}
 }

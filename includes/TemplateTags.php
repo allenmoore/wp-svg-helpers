@@ -32,12 +32,12 @@ function inline_svg( $svg ) {
 /**
  * Template Tag that displays a button with an inline SVG.
  *
- * @author Allen Moore
  * @param  string $svg   the svg to display inline.
  * @param  string $title the title of the button.
  * @param  string $loc   the svg display location, either right or left.
+ * @param  string        the css class of the button.
  * @return void
  */
-function svg_button( $svg, $title, $loc = null ) {
-	do_action( 'svg_button', $svg, $title, $loc );
+function svg_button( $svg, $title, $loc = null, $class = '' ) {
+	do_action( 'svg_button', $svg, $title, $loc, $class );
 }
