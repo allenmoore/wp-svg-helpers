@@ -55,5 +55,4 @@ Accessibility attributes can be easily defined as a string, as such:
 ## Roadmap
 The Roadmap aims to outline future features.
 
-* Addition of a class filter for buttons with SVG's. This will be an array of classes that can be specified through the template tag or via a filter.
-* Make both inline SVG's and buttons with SVG's, fully accessible.
+* Addition of JavaScript helper functions.
